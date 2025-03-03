@@ -9,8 +9,4 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'ETicaretClient';
-
-  constructor(private toastr: CustomToastrService) {
-    this.toastr.message('Merhaba', 'Başlık',ToastrMessageType.Success);
-  }
 }
