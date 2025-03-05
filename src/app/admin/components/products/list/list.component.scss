@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.mat-elevation-z8 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+mat-header-row {
+  background-color: #3f51b5;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+mat-header-cell {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+mat-row {
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+mat-row:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+mat-row:hover {
+  background-color: rgba(63, 81, 181, 0.1);
+}
+
+mat-cell {
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.mat-elevation-z8 {
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .mat-elevation-z8 {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  mat-header-cell, mat-cell {
+    padding: 12px;
+  }
+}
