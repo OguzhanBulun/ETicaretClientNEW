@@ -1,0 +1,29 @@
+::ng-deep .mat-dialog-container {
+    width: 350px;
+    padding: 24px;
+    border-radius: 8px;
+  }
+  
+  .dialog-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .dialog-content {
+    text-align: center;
+    font-size: 16px;
+    padding: 16px 0;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+  }
+  
+  .cancel-btn {
+    color: #666;
+    font-weight: bold;
+  }
+  
