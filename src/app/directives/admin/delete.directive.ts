@@ -5,6 +5,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerTypes } from 'src/app/base/base.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent, DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
+import { error } from 'console';
 declare var $: any;
 
 @Directive({
@@ -12,13 +15,15 @@ declare var $: any;
 })
 export class DeleteDirective {
   @Input() id: string;
-
+  @Input() controller: string;
+ 
   constructor(
     private element: ElementRef,
-    private productService: ProductService,
+    private httpClientService: HttpClientService,
     private renderer: Renderer2,
     private spinner: NgxSpinnerService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private alertify: AlertifyService
   ) {
 
     const img = this.renderer.createElement('img');
@@ -54,23 +59,19 @@ export class DeleteDirective {
     this.openDialog(async () => {
       this.spinner.show(SpinnerTypes.BallAtom);
       const td: HTMLTableCellElement = this.element.nativeElement;
-  
-      try {
-        await this.productService.delete(this.id);
-        $(td.parentElement).animate({
-          opacity:0,
-          left: "+=50",
-          height: "toggle"
-        }, 700, () => {
-          this.callback.emit();
+       this.httpClientService.delete({controller: this.controller}, this.id).subscribe(data =>{
+          $(td.parentElement).animate({
+            opacity:0,
+            left: "+=50",
+            height: "toggle"
+          }, 700, () => {
+            this.callback.emit();
+            this.alertify.message('Product deleted successfully', MessageType.Success);
+          });
+        },(errorResponse: HttpErrorResponse) => {
+          this.spinner.hide(SpinnerTypes.BallAtom);
+          this.alertify.message(errorResponse.error, MessageType.Error);
         });
-      } catch (error) {
-        if (error instanceof HttpErrorResponse) {
-          alert(`Silme işlemi başarısız: ${error.message}`);
-        } else {
-          alert('Beklenmeyen bir hata oluştu.');
-        }
-      }
     });
   }
 
