@@ -1,19 +1,16 @@
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 * {
   font-family: 'Inter', sans-serif;
 }
 
-/* Genel stil */
 .mat-elevation-z8 {
-  background: #f7f7f7; /* Hafif açık gri */
+  background: #f7f7f7; 
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Tablo genel */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -28,10 +25,9 @@ th.mat-header-cell {
   padding: 12px;
   color: #555;
   background: #e8e8e8;
-  letter-spacing: 0.5px; /* Harfler biraz daha ferah */
+  letter-spacing: 0.5px; 
 }
 
-/* Satır hücreleri */
 td.mat-cell {
   padding: 12px;
   font-size: 15px;
@@ -41,13 +37,11 @@ td.mat-cell {
   letter-spacing: 0.3px;
 }
 
-/* Hover efekti */
 tr.mat-row:hover {
   background: rgba(0, 0, 0, 0.05);
   transition: background 0.3s ease;
 }
 
-/* Sayfalama */
 .mat-paginator {
   background: transparent;
   color: #444;
@@ -55,7 +49,6 @@ tr.mat-row:hover {
   padding: 8px;
 }
 
-/* Aktif sayfa */
 .mat-paginator .mat-button {
   color: #1976d2;
   font-weight: 500;
@@ -65,7 +58,22 @@ tr.mat-row:hover {
   background: rgba(25, 118, 210, 0.1);
 }
 
-/* Sayfalama ikonları */
+td.mat-cell img {
+  width: 24px; /* İkon boyutu */
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+td.mat-cell img:hover {
+  transform: scale(1.2); 
+  filter: brightness(1.2); 
+}
+
+td.mat-cell img:active {
+  transform: scale(0.9); 
+}
+
 .mat-paginator-navigation-next,
 .mat-paginator-navigation-previous {
   color: #1976d2 !important;

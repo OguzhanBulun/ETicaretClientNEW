@@ -23,7 +23,7 @@ export interface PeriodicElement {
 })
 export class ListComponent extends BaseComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'price', 'stock', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['name', 'price', 'stock', 'createdDate', 'updatedDate', 'edit', 'delete'];
   dataSource : MatTableDataSource<List_Product> = null;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -43,6 +43,10 @@ export class ListComponent extends BaseComponent implements OnInit {
 
     this.dataSource = new MatTableDataSource<List_Product>(productData.products);
     this.paginator.length = productData.totalCount; 
+  }
+
+  delete(id){
+    
   }
 
   async pageChanged(){
