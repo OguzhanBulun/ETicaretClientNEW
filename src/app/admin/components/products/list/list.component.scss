@@ -17,7 +17,6 @@ table {
   color: #333;
 }
 
-/* Başlık hücreleri */
 th.mat-header-cell {
   font-weight: 600;
   font-size: 15px;
@@ -59,7 +58,7 @@ tr.mat-row:hover {
 }
 
 td.mat-cell img {
-  width: 24px; /* İkon boyutu */
+  width: 24px; 
   height: 24px;
   cursor: pointer;
   transition: transform 0.2s ease, filter 0.2s ease;
