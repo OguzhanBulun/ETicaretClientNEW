@@ -3,4 +3,6 @@ export class List_Product {
     name: string;
     price: number;
     stock: number;
+    createdDate: Date;
+    updatedDate: Date;
 }

@@ -31,6 +31,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
       this.hideSpinner(SpinnerTypes.BallAtom);
       this.alertifyService.message("Product created successfully", MessageType.Success);
     }, errorMessage => {
+      this.hideSpinner(SpinnerTypes.BallAtom);
       this.alertifyService.message(errorMessage, MessageType
       .Error);
     });

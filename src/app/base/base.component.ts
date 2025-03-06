@@ -6,11 +6,6 @@ constructor(private spinner: NgxSpinnerService) { }
 
   showSpinner( spinnerType: SpinnerTypes) {
     this.spinner.show(spinnerType);
-
-    // setTimeout(() => {
-    //   this.spinner.hide(spinnerType);
-    // }
-    // , 3000);
   }
 
   hideSpinner(spinnerType: SpinnerTypes) {

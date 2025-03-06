@@ -10,11 +10,8 @@ export class AlertifyService {
     alertify.set('notifier', 'position', 'bottom-center');
   }
 
-  message(message: string, type: MessageType, dissmissOthers: boolean = true) {
+  message(message: string, type: MessageType) {
     const msg = alertify[type](message);
-    if (dissmissOthers) {
-      alertify.dismissOthers();
-    }
   }
 }
 

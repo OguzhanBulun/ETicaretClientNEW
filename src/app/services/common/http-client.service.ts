@@ -21,7 +21,7 @@ export class HttpClientService {
       url = requestParameters.fullEndpoint;
     }
     else {
-    url = `${this.generateUrl(requestParameters)}${id ? `/${id}` : ''}`;
+    url = `${this.generateUrl(requestParameters)}${id ? `/${id}` : ''}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
     }
 
     return this.httpClientService.get<T>(url, { headers: requestParameters.headers });
@@ -34,7 +34,7 @@ export class HttpClientService {
       url = requestParameters.fullEndpoint;
     }
     else {
-    url = `${this.generateUrl(requestParameters)}`;
+    url = `${this.generateUrl(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
     }
 
     return this.httpClientService.post<T>(url, body, { headers: requestParameters.headers });
@@ -47,7 +47,7 @@ export class HttpClientService {
       url = requestParameters.fullEndpoint;
     }
     else {
-    url = `${this.generateUrl(requestParameters)}`;
+    url = `${this.generateUrl(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
     }
 
     return this.httpClientService.put<T>(url, body, { headers: requestParameters.headers });
@@ -55,14 +55,13 @@ export class HttpClientService {
 
   delete<T>(requestParameters : Partial<RequestParameters>, id: string) : Observable<T> {
 
-    debugger;
     let url : string = "";
 
     if(requestParameters.fullEndpoint) {
       url = requestParameters.fullEndpoint;
     }
     else {
-    url = `${this.generateUrl(requestParameters)}/${id}`;
+    url = `${this.generateUrl(requestParameters)}/${id}${requestParameters.queryString ? `?${requestParameters.queryString}` : ''}`;
     }
     
     return this.httpClientService.delete<T>(url, { headers: requestParameters.headers });
@@ -72,6 +71,7 @@ export class HttpClientService {
 export class RequestParameters {
   controller? : string;
   action ?: string;
+  queryString?: string;
   headers?: HttpHeaders;
   baseUrl?: string;
   fullEndpoint?: string;
