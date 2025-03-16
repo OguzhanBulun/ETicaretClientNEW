@@ -3,9 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
 import { HttpClientService } from '../http-client.service';
-import { AlertifyService } from '../../admin/alertify.service';
-import { CustomToastrService } from '../../ui/custom-toastr.service';
+import { AlertifyService, MessageType } from '../../admin/alertify.service';
+import { CustomToastrService, ToastrMessageType } from '../../ui/custom-toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerTypes } from 'src/app/base/base.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -47,19 +48,11 @@ export class FileUploadComponent {
 
           const message: string = "Dosyalar başarıyla yüklenmiştir.";
 
-          this.spinner.hide(SpinnerType.BallAtom);
+          this.spinner.hide(SpinnerTypes.BallAtom);
           if (this.options.isAdminPage) {
-            this.alertifyService.message(message,
-              {
-                dismissOthers: true,
-                messageType: MessageType.Success,
-                position: Position.TopRight
-              })
+            this.alertifyService.message(message, MessageType.Success)
           } else {
-            this.customToastrService.message(message, "Başarılı.", {
-              messageType: ToastrMessageType.Success,
-              position: ToastrPosition.TopRight
-            })
+            this.customToastrService.message(message, "Başarılı.", ToastrMessageType.Success)
           }
 
 
@@ -67,19 +60,11 @@ export class FileUploadComponent {
 
           const message: string = "Dosyalar yüklenirken beklenmeyen bir hatayla karşılaşılmıştır.";
 
-          this.spinner.hide(SpinnerType.BallAtom)
+          this.spinner.hide(SpinnerTypes.BallAtom);
           if (this.options.isAdminPage) {
-            this.alertifyService.message(message,
-              {
-                dismissOthers: true,
-                messageType: MessageType.Error,
-                position: Position.TopRight
-              })
+            this.alertifyService.message(message, MessageType.Error)
           } else {
-            this.customToastrService.message(message, "Başarsız.", {
-              messageType: ToastrMessageType.Error,
-              position: ToastrPosition.TopRight
-            })
+            this.customToastrService.message(message, "Başarsız.", ToastrMessageType.Error)
           }
 
         });
