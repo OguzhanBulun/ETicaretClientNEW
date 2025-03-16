@@ -46,25 +46,25 @@ export class FileUploadComponent {
           headers: new HttpHeaders({ "responseType": "blob" })
         }, fileData).subscribe(data => {
 
-          const message: string = "Dosyalar başarıyla yüklenmiştir.";
+          const message: string = "Files have been uploaded successfully.";
 
           this.spinner.hide(SpinnerTypes.BallAtom);
           if (this.options.isAdminPage) {
             this.alertifyService.message(message, MessageType.Success)
           } else {
-            this.customToastrService.message(message, "Başarılı.", ToastrMessageType.Success)
+            this.customToastrService.message(message, "Successful.", ToastrMessageType.Success)
           }
 
 
         }, (errorResponse: HttpErrorResponse) => {
 
-          const message: string = "Dosyalar yüklenirken beklenmeyen bir hatayla karşılaşılmıştır.";
+          const message: string = "An unexpected error occurred while uploading the files.";
 
           this.spinner.hide(SpinnerTypes.BallAtom);
           if (this.options.isAdminPage) {
             this.alertifyService.message(message, MessageType.Error)
           } else {
-            this.customToastrService.message(message, "Başarsız.", ToastrMessageType.Error)
+            this.customToastrService.message(message, "Failed.", ToastrMessageType.Error)
           }
 
         });
