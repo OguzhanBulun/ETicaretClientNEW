@@ -7,6 +7,8 @@ import { AlertifyService, MessageType } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType } from '../../ui/custom-toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerTypes } from 'src/app/base/base.component';
+import { DialogService } from '../dialog.service';
+import { FileUploadDialogComponent, FileUploadState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -36,9 +38,9 @@ export class FileUploadComponent {
     }
     this.dialogService.openDialog({
       componentType: FileUploadDialogComponent,
-      data: FileUploadDialogState.Yes,
+      data: FileUploadState.Yes,
       afterClosed: () => {
-        this.spinner.show(SpinnerType.BallAtom)
+        this.spinner.show(SpinnerTypes.BallAtom)
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
